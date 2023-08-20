@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--
+  	This is a Flexxgram source code file.
+  	Flexxgram is not a trademark of Telegram and Telegram X.
+  	Flexxgram is an open-source and freely distributed modification of Telegram X.
+  	Copyright (C) 2023 Flexxteam. 
+  -->
+
+  <!-- Controller ids -->
+  <item type="id" name="controller_MainPreferences" />
+  <item type="id" name="controller_GeneralPreferences" />
+  <item type="id" name="controller_AppearancePreferences" />
+  <item type="id" name="controller_ChatsPreferences" />
+  <item type="id" name="controller_SecurityPreferences" />
+  <item type="id" name="controller_PushPreferences" />
+  <item type="id" name="controller_OtherPreferences" />
+
+  <!-- Main Preferences Controller ids -->
+  <item type="id" name="btn_Updates" />
+  <item type="id" name="btn_MainPreferences" />
+  <item type="id" name="btn_GeneralPreferences" />
+  <item type="id" name="btn_AppearancePreferences" />
+  <item type="id" name="btn_ChatsPreferences" />
+  <item type="id" name="btn_SecurityPreferences" />
+  <item type="id" name="btn_OtherPreferences" />
+  <item type="id" name="btn_OfficialChannel" />
+  <item type="id" name="btn_OfficialWebsite" />
+  <item type="id" name="btn_SourceCode" />
+  <item type="id" name="btn_Translation" />
+  <item type="id" name="btn_Donate" />
+
+</resources>

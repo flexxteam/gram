@@ -28,6 +28,8 @@ import androidx.collection.SparseArrayCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.flexxteam.messenger.preferences.MainPreferencesController;
+
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 import org.thunderdog.challegram.BuildConfig;
@@ -595,6 +597,10 @@ public class SettingsController extends ViewController<Void> implements
     items.add(new ListItem(ListItem.TYPE_INFO_MULTILINE, R.id.btn_bio, R.drawable.baseline_info_24, R.string.UserBio).setContentStrings(R.string.LoadingInformation, R.string.BioNone));
     items.add(new ListItem(ListItem.TYPE_SHADOW_BOTTOM));
 
+    items.add(new ListItem(ListItem.TYPE_SHADOW_TOP));
+    items.add(new ListItem(ListItem.TYPE_SETTING, R.id.btn_MainPreferences, R.drawable.baseline_settings_suggest_24, R.string.MainPreferences));
+    items.add(new ListItem(ListItem.TYPE_SHADOW_BOTTOM));
+
     TdApi.SuggestedAction[] actions = tdlib.getSuggestedActions();
     int addedActionItems = 0;
     for (TdApi.SuggestedAction action : actions) {
@@ -649,36 +655,6 @@ public class SettingsController extends ViewController<Void> implements
     items.add(new ListItem(ListItem.TYPE_SETTING, R.id.btn_faq, R.drawable.baseline_help_24, R.string.TelegramFAQ));
     items.add(new ListItem(ListItem.TYPE_SEPARATOR));
     items.add(new ListItem(ListItem.TYPE_SETTING, R.id.btn_privacyPolicy, R.drawable.baseline_policy_24, R.string.PrivacyPolicy));
-    items.add(new ListItem(ListItem.TYPE_SHADOW_BOTTOM));
-
-    items.add(new ListItem(ListItem.TYPE_SHADOW_TOP));
-    items.add(new ListItem(ListItem.TYPE_SETTING, R.id.btn_checkUpdates, R.drawable.baseline_google_play_24, U.isAppSideLoaded() ? R.string.AppOnGooglePlay : R.string.CheckForUpdates));
-    if (!U.isAppSideLoaded()) {
-      items.add(new ListItem(ListItem.TYPE_SEPARATOR));
-      items.add(new ListItem(ListItem.TYPE_SETTING, R.id.btn_subscribeToBeta, R.drawable.templarian_baseline_flask_24, R.string.SubscribeToBeta));
-    }
-    items.add(new ListItem(ListItem.TYPE_SEPARATOR));
-    items.add(new ListItem(ListItem.TYPE_VALUED_SETTING_COMPACT, R.id.btn_sourceCode, R.drawable.baseline_github_24, R.string.ViewSourceCode));
-    this.previousBuildInfo = Settings.instance().getPreviousBuildInformation();
-    if (this.previousBuildInfo != null) {
-      items.add(new ListItem(ListItem.TYPE_SEPARATOR));
-      items.add(new ListItem(ListItem.TYPE_VALUED_SETTING_COMPACT, R.id.btn_sourceCodeChanges, R.drawable.baseline_code_24, R.string.ViewSourceCodeChanges));
-    }
-    AppBuildInfo currentBuildInfo = Settings.instance().getCurrentBuildInformation();
-    if (!currentBuildInfo.getPullRequests().isEmpty()) {
-      for (PullRequest pullRequest : currentBuildInfo.getPullRequests()) {
-        String title = Lang.getString(R.string.PullRequestCommit, pullRequest.getId());
-        if (!pullRequest.getCommitAuthor().isEmpty()) {
-          title = Lang.getString(R.string.format_PRMadeBy, title, pullRequest.getCommitAuthor());
-        }
-        items.add(new ListItem(ListItem.TYPE_SEPARATOR));
-        items.add(new ListItem(ListItem.TYPE_VALUED_SETTING_COMPACT, R.id.btn_sourceCode, R.drawable.templarian_baseline_source_merge_24, title, false).setData(pullRequest));
-      }
-    }
-    if (Config.SHOW_COPY_REPORT_DETAILS_IN_SETTINGS) {
-      items.add(new ListItem(ListItem.TYPE_SEPARATOR));
-      items.add(new ListItem(ListItem.TYPE_VALUED_SETTING_COMPACT, R.id.btn_copyDebug, R.drawable.baseline_bug_report_24, R.string.CopyReportData));
-    }
     items.add(new ListItem(ListItem.TYPE_SHADOW_BOTTOM));
 
     items.add(new ListItem(ListItem.TYPE_BUILD_NO, R.id.btn_build, 0, Lang.getAppBuildAndVersion(tdlib), false));
@@ -946,27 +922,6 @@ public class SettingsController extends ViewController<Void> implements
     
   }
 
-  private void viewGooglePlay () {
-    tdlib.ui().openUrl(this, BuildConfig.MARKET_URL, new TdlibUi.UrlOpenParameters().disableInstantView());
-  }
-
-  private void viewSourceCode (boolean isTdlib) {
-    String url;
-    if (isTdlib) {
-      String tdlibCommitHash = Td.tdlibCommitHashFull();
-      url = AppBuildInfo.tdlibCommitUrl(tdlibCommitHash);
-    } else {
-      AppBuildInfo appBuildInfo = Settings.instance().getCurrentBuildInformation();
-      url = appBuildInfo.commitUrl();
-    }
-    if (!StringUtils.isEmpty(url)) {
-      tdlib.ui().openUrl(this,
-        url,
-        new TdlibUi.UrlOpenParameters().disableInstantView()
-      );
-    }
-  }
-
   @Override
   public void onClick (View v) {
     cancelSupportOpen();
@@ -978,49 +933,14 @@ public class SettingsController extends ViewController<Void> implements
       EditBioController c = new EditBioController(context, tdlib);
       c.setArguments(new EditBioController.Arguments(about != null ? about.text : "", 0));
       navigateTo(c);
+    } else if (viewId == R.id.btn_MainPreferences) {
+      navigateTo(new MainPreferencesController(context, tdlib));
     } else if (viewId == R.id.btn_languageSettings) {
       navigateTo(new SettingsLanguageController(context, tdlib));
     } else if (viewId == R.id.btn_notificationSettings) {
       navigateTo(new SettingsNotificationController(context, tdlib));
     } else if (viewId == R.id.btn_devices) {
       navigateTo(new SettingsSessionsController(context, tdlib));
-    } else if (viewId == R.id.btn_checkUpdates) {
-      viewGooglePlay();
-    } else if (viewId == R.id.btn_subscribeToBeta) {
-      tdlib.ui().subscribeToBeta(this);
-    } else if (viewId == R.id.btn_sourceCodeChanges) {// TODO provide an ability to view changes in PRs if they are present in both builds
-      AppBuildInfo appBuildInfo = Settings.instance().getCurrentBuildInformation();
-      tdlib.ui().openUrl(this, appBuildInfo.changesUrlFrom(previousBuildInfo), new TdlibUi.UrlOpenParameters().disableInstantView());
-    } else if (viewId == R.id.btn_tdlib) {
-      viewSourceCode(true);
-    } else if (viewId == R.id.btn_sourceCode) {
-      AppBuildInfo appBuildInfo = Settings.instance().getCurrentBuildInformation();
-      PullRequest specificPullRequest = (PullRequest) ((ListItem) v.getTag()).getData();
-      if (specificPullRequest != null) {
-        tdlib.ui().openUrl(this, specificPullRequest.getCommitUrl(), new TdlibUi.UrlOpenParameters().disableInstantView());
-      } else if (!appBuildInfo.getPullRequests().isEmpty() || appBuildInfo.getTdlibCommitFull() != null) {
-        Options.Builder b = new Options.Builder();
-        if (!appBuildInfo.getPullRequests().isEmpty()) {
-          b.info(Lang.plural(R.string.PullRequestsInfo, appBuildInfo.getPullRequests().size()));
-        }
-        b.item(new OptionItem(R.id.btn_sourceCode, Lang.getString(R.string.format_commit, Lang.getString(R.string.ViewSourceCode), appBuildInfo.getCommit()), OPTION_COLOR_NORMAL, R.drawable.baseline_github_24));
-        if (appBuildInfo.getTdlibCommitFull() != null) {
-          b.item(new OptionItem(R.id.btn_tdlib, Lang.getCharSequence(R.string.format_commit, "TDLib " + Td.tdlibVersion(), Td.tdlibCommitHash()), OPTION_COLOR_NORMAL, R.drawable.baseline_tdlib_24));
-        }
-        int i = 0;
-        for (PullRequest pullRequest : appBuildInfo.getPullRequests()) {
-          b.item(new OptionItem(i++, Lang.getString(R.string.format_commit, Lang.getString(R.string.PullRequestCommit, pullRequest.getId()), pullRequest.getCommit()), OPTION_COLOR_NORMAL, R.drawable.templarian_baseline_source_merge_24));
-        }
-        showOptions(b.build(), (view, id) -> {
-          if (id == R.id.btn_sourceCode || id == R.id.btn_tdlib) {
-            viewSourceCode(id == R.id.btn_tdlib);
-          } else if (id >= 0 && id < appBuildInfo.getPullRequests().size()) {
-            PullRequest pullRequest = appBuildInfo.getPullRequests().get(id);
-            tdlib.ui().openUrl(this, pullRequest.getCommitUrl(), new TdlibUi.UrlOpenParameters().disableInstantView());
-          }
-          return true;
-        });
-      }
     } else if (viewId == R.id.btn_copyDebug) {
       UI.copyText(U.getUsefulMetadata(tdlib), R.string.CopiedText);
     } else if (viewId == R.id.btn_themeSettings) {

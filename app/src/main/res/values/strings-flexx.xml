@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--
+  	This is a Flexxgram source code file.
+  	Flexxgram is not a trademark of Telegram and Telegram X.
+  	Flexxgram is an open-source and freely distributed modification of Telegram X.
+  	Copyright (C) 2023 Flexxteam. 
+  -->
+
+  <!-- Basic Strings -->
+  <string name="FlexxgramVersion" translatable="false">Flexxgram 1.0.0</string>
+
+  <!-- Links -->
+  <string name="OfficialChannelLink" translatable="false">https://flexxgram.t.me/</string>
+  <string name="OfficialWebsiteLink" translatable="false">https://flexxgram.com/</string>
+  <string name="SourceCodeLink" translatable="false">https://github.com/flexxteam/gram</string>
+  <string name="TranslationLink" translatable="false">https://crowdin.com/project/flexxgram/</string>
+  <string name="DonateLink" translatable="false">https://flexxteamdonate.t.me/</string>
+
+  <!-- Categories -->
+  <string name="Updates">Updates</string>
+  <string name="Preferences">Preferences</string>
+  <string name="AboutProject">About</string>
+
+  <!-- Main Preferences Controller Strings -->
+  <string name="CheckUpdates">Check updates</string>
+  <string name="MainPreferences">Flexxgram settings</string>
+  <string name="GeneralPreferences">General</string>
+  <string name="AppearancePreferences">Appearance</string>
+  <string name="ChatsPreferences">Chats</string>
+  <string name="SecurityPreferences">Security</string>
+  <string name="OtherPreferences">Other</string>
+  <string name="OfficialChannel">Telegram channel</string>
+  <string name="OfficialWebsite">Official website</string>
+  <string name="TranslationDesc">Translate Flexxgram into your language.</string>
+  <string name="Donate">Donate</string>
+  <string name="DonateDesc">Support the development of the project.</string>
+
+</resources>

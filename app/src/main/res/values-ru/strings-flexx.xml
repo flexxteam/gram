@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--
+  	This is a Flexxgram source code file.
+  	Flexxgram is not a trademark of Telegram and Telegram X.
+  	Flexxgram is an open-source and freely distributed modification of Telegram X.
+  	Copyright (C) 2023 Flexxteam. 
+  -->
+
+  <!-- Categories -->
+  <string name="Updates">Обновления</string>
+  <string name="Preferences">Настройки</string>
+  <string name="AboutProject">О проекте</string>
+
+  <!-- Main Preferences Controller Strings -->
+  <string name="CheckUpdates">Проверить обновления</string>
+  <string name="MainPreferences">Настройки Flexxgram</string>
+  <string name="GeneralPreferences">Общие</string>
+  <string name="AppearancePreferences">Оформление</string>
+  <string name="ChatsPreferences">Чаты</string>
+  <string name="SecurityPreferences">Безопасность</string>
+  <string name="OtherPreferences">Другое</string>
+  <string name="OfficialChannel">Telegram канал</string>
+  <string name="OfficialWebsite">Официальный сайт</string>
+  <string name="SourceCode">Посмотреть исходный код</string>
+  <string name="Translation">Перевести</string>
+  <string name="TranslationDesc">Переведите Flexxgram на ваш язык.</string>
+  <string name="Donate">Донаты</string>
+  <string name="DonateDesc">Поддержите разработку проекта.</string>
+
+</resources>
