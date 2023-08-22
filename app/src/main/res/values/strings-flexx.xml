@@ -49,6 +49,8 @@
   <string name="ChatFoldersHideBottomBarOnScroll">Hide bottom bar on scroll</string>
 
   <!-- Chats Preferences Controller Strings -->
+  <string name="DisableStickerTimestamp">Disable sticker timestamp</string>
+
   <string name="DisableCameraButton">Disable camera button</string>
   <string name="DisableRecordButton">Disable record button</string>
   <string name="DisableSenderButton">Disable send-as button</string>

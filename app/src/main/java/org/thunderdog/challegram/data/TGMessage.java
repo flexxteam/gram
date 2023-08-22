@@ -48,6 +48,8 @@ import androidx.annotation.StringRes;
 import androidx.annotation.UiThread;
 import androidx.collection.LongSparseArray;
 
+import com.flexxteam.messenger.FlexxConfig;
+
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 import org.drinkmore.Tracer;
@@ -3638,6 +3640,8 @@ public abstract class TGMessage implements InvalidateContentProvider, TdlibDeleg
     final boolean isSending = isSending();
     final boolean isFailed = isFailed();
 
+    final boolean isSticker = msg.content.getConstructor() == TdApi.MessageSticker.CONSTRUCTOR;
+
     boolean reverseOrder;
 
     if ((reverseOrder = Config.MOVE_BUBBLE_TIME_RTL_TO_LEFT && moveBubbleTimePartToLeft())) {
@@ -3650,7 +3654,7 @@ public abstract class TGMessage implements InvalidateContentProvider, TdlibDeleg
       startY -= commentButton.getAnimatedHeight(0, commentButton.getVisibility());
     }
 
-    if (backgroundColor != 0) {
+    if (backgroundColor != 0 && !(isSticker && FlexxConfig.disableStickerTimestamp)) {
       startY -= Screen.dp(4f);
       RectF rectF = Paints.getRectF();
       int padding = Screen.dp(6f);
@@ -3706,7 +3710,7 @@ public abstract class TGMessage implements InvalidateContentProvider, TdlibDeleg
       startX += isTranslatedCounter.getScaledWidth(Screen.dp(COUNTER_ICON_MARGIN + COUNTER_ADD_MARGIN));
     }
 
-    if (time != null) {
+    if (time != null && !(isSticker && FlexxConfig.disableStickerTimestamp)) {
       c.drawText(time, startX, startY + Screen.dp(15.5f), Paints.colorPaint(mTimeBubble(), textColor));
       startX += pTimeWidth;
     }
@@ -3727,7 +3731,7 @@ public abstract class TGMessage implements InvalidateContentProvider, TdlibDeleg
         // TODO failure icon
       } else if (isSending) {
         Drawables.draw(c, Icons.getClockIcon(iconColorId), startX - Screen.dp(Icons.CLOCK_SHIFT_X), top - Screen.dp(Icons.CLOCK_SHIFT_Y), iconPaint);
-      } else {
+      } else if (!(isSticker && FlexxConfig.disableStickerTimestamp)) {
         boolean unread = isUnread() && !noUnread();
         Drawables.draw(c, unread ? Icons.getSingleTick(iconColorId) : Icons.getDoubleTick(iconColorId), startX - Screen.dp(Icons.TICKS_SHIFT_X), top - Screen.dp(Icons.TICKS_SHIFT_Y), unread ? ticksPaint : ticksReadPaint);
       }

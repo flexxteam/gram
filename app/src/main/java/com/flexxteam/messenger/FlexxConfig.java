@@ -38,9 +38,11 @@ public class FlexxConfig {
   private static boolean enableChatFolders = instance().getBoolean(PREF_ENABLE_CHAT_FOLDERS, true);
   private static boolean chatFoldersHideBottomBarOnScroll = instance().getBoolean(PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL, true);
 
+  private static final String PREF_DISABLE_STICKER_TIMESTAMP = "disable_sticker_timestamp";
   private static final String PREF_DISABLE_CAMERA_BUTTON = "disable_camera_button";
   private static final String PREF_DISABLE_RECORD_BUTTON = "disable_record_button";
   private static final String PREF_DISABLE_SENDER_BUTTON = "disable_sender_button";
+  private static boolean disableStickerTimestamp = instance().getBoolean(PREF_DISABLE_STICKER_TIMESTAMP, false);
   private static boolean disableCameraButton = instance().getBoolean(PREF_DISABLE_CAMERA_BUTTON, false);
   private static boolean disableRecordButton = instance().getBoolean(PREF_DISABLE_RECORD_BUTTON, false);
   private static boolean disableSenderButton = instance().getBoolean(PREF_DISABLE_SENDER_BUTTON, false);
@@ -171,6 +173,10 @@ public class FlexxConfig {
 
   public void toggleHidePhoneNumber() {
   	putBoolean(PREF_HIDE_PHONE_NUMBER, hidePhoneNumber ^= true);
+  }
+
+  public void toggleDisableStickerTimestamp() {
+    putBoolean(PREF_DISABLE_STICKER_TIMESTAMP, disableStickerTimestamp ^= true);
   }
 
   public void toggleDisableCameraButton() {

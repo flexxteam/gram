@@ -40,7 +40,10 @@ public class ChatsPreferencesController extends RecyclerViewController<Void> imp
 
   @Override public void onClick (View v) {
     int viewId = v.getId();
-    if (viewId == R.id.btn_DisableCameraButton) {
+    if (viewId == R.id.btn_DisableStickerTimestamp) {
+      FlexxConfig.instance().toggleDisableStickerTimestamp();
+      adapter.updateValuedSettingById(R.id.btn_DisableStickerTimestamp)
+    } else if (viewId == R.id.btn_DisableCameraButton) {
       FlexxConfig.instance().toggleDisableCameraButton();
       adapter.updateValuedSettingById(R.id.btn_DisableCameraButton)
     } else if (viewId == R.id.btn_DisableRecordButton) {
@@ -57,7 +60,9 @@ public class ChatsPreferencesController extends RecyclerViewController<Void> imp
       @Override protected void setValuedSetting (ListItem item, SettingView view, boolean isUpdate) {
         view.setDrawModifier(item.getDrawModifier());
         int itemId = item.getId();
-        if (itemId == R.id.btn_DisableCameraButton) {
+        if (itemId == R.id.btn_DisableStickerTimestamp) {
+          view.getToggler().setRadioEnabled(FlexxConfig.disableStickerTimestamp, isUpdate);
+        } else if (itemId == R.id.btn_DisableCameraButton) {
           view.getToggler().setRadioEnabled(FlexxConfig.disableCameraButton, isUpdate);
         } else if (itemId == R.id.btn_DisableRecordButton) {
           view.getToggler().setRadioEnabled(FlexxConfig.disableRecordButton, isUpdate);
@@ -70,6 +75,11 @@ public class ChatsPreferencesController extends RecyclerViewController<Void> imp
     ArrayList<ListItem> items = new ArrayList<>();
 
     items.add(new ListItem(ListItem.TYPE_EMPTY_OFFSET_SMALL));
+
+    items.add(new ListItem(ListItem.TYPE_HEADER, 0, 0, R.string.Stickers));
+    items.add(new ListItem(ListItem.TYPE_SHADOW_TOP));
+    items.add(new ListItem(ListItem.TYPE_RADIO_SETTING, R.id.btn_DisableStickerTimestamp, 0, R.string.DisableStickerTimestamp));
+    items.add(new ListItem(ListItem.TYPE_SHADOW_BOTTOM));
 
     items.add(new ListItem(ListItem.TYPE_HEADER, 0, 0, R.string.MessagePanel));
     items.add(new ListItem(ListItem.TYPE_SHADOW_TOP));
