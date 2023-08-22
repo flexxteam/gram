@@ -10,6 +10,7 @@
 
   <!-- Basic Strings -->
   <string name="FlexxgramVersion" translatable="false">Flexxgram 1.0.0</string>
+  <string name="PhoneHidden">Phone hidden</string>
 
   <!-- Links -->
   <string name="OfficialChannelLink" translatable="false">https://flexxgram.t.me/</string>
@@ -22,6 +23,7 @@
   <string name="Updates">Updates</string>
   <string name="Preferences">Preferences</string>
   <string name="AboutProject">About</string>
+  <string name="Drawer">Drawer</string>
 
   <!-- Main Preferences Controller Strings -->
   <string name="CheckUpdates">Check updates</string>
@@ -36,5 +38,9 @@
   <string name="TranslationDesc">Translate Flexxgram into your language.</string>
   <string name="Donate">Donate</string>
   <string name="DonateDesc">Support the development of the project.</string>
+
+  <!-- Appearance Preferences Controller String -->
+  <string name="HidePhoneNumber">Hide phone number</string>
+  <string name="HidePhoneNumberDesc">Enabling this setting will hide your phone number from the drawer and profile. Note: You will need to restart the application to apply the changes.</string>
 
 </resources>

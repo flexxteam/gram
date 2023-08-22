@@ -40,9 +40,10 @@ public class AppearancePreferencesController extends RecyclerViewController<Void
 
   @Override public void onClick (View v) {
     int viewId = v.getId();
-    /* if (viewId == R.id.something) {
-      Do action.
-    } */
+    if (viewId == R.id.btn_HidePhoneNumber) {
+      FlexxConfig.instance().toggleHidePhoneNumber();
+      adapter.updateValuedSettingById(R.id.btn_HidePhoneNumber);
+    }
   }
 
   @Override protected void onCreateView (Context context, CustomRecyclerView recyclerView) {
@@ -50,15 +51,21 @@ public class AppearancePreferencesController extends RecyclerViewController<Void
       @Override protected void setValuedSetting (ListItem item, SettingView view, boolean isUpdate) {
         view.setDrawModifier(item.getDrawModifier());
         int itemId = item.getId();
-        /* if (itemId == R.id.something) {
-          Do action.
-        } */
+        if (itemId == R.id.btn_HidePhoneNumber) {
+          view.getToggler().setRadioEnabled(FlexxConfig.hidePhoneNumber, isUpdate);
+        }
       }
     };
 
     ArrayList<ListItem> items = new ArrayList<>();
 
-    // List items.
+    items.add(new ListItem(ListItem.TYPE_EMPTY_OFFSET_SMALL));
+
+    items.add(new ListItem(ListItem.TYPE_HEADER, 0, 0, R.string.Drawer));
+    items.add(new ListItem(ListItem.TYPE_SHADOW_TOP));
+    items.add(new ListItem(ListItem.TYPE_RADIO_SETTING, R.id.btn_HidePhoneNumber, 0, R.string.HidePhoneNumber));
+    items.add(new ListItem(ListItem.TYPE_SHADOW_BOTTOM));
+    items.add(new ListItem(ListItem.TYPE_DESCRIPTION, 0, 0, R.string.HidePhoneNumberDesc));
 
     adapter.setItems(items, true);
     recyclerView.setAdapter(adapter);

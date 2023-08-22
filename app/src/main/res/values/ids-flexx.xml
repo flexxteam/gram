@@ -31,4 +31,7 @@
   <item type="id" name="btn_Translation" />
   <item type="id" name="btn_Donate" />
 
+  <!-- Appearance Preferences Controller ids -->
+  <item type="id" name="btn_HidePhoneNumber" />
+
 </resources>

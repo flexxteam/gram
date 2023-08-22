@@ -31,6 +31,9 @@ public class FlexxConfig {
   private final LevelDB config;
   private static final String KEY_VERSION = "version";
 
+  private static final String PREF_HIDE_PHONE_NUMBER = "hide_phone_number";
+  private static boolean hidePhoneNumber = instance().getBoolean(PREF_HIDE_PHONE_NUMBER, false);
+
   private FlexxConfig () {
     File configDir = new File(UI.getAppContext().getFilesDir(), "flexx_config");
     if (!configDir.exists() && !configDir.mkdir()) {
@@ -153,5 +156,9 @@ public class FlexxConfig {
         listener.onSettingsChanged(key, newSettings, oldSettings);
       }
     }
+  }
+
+  public void toggleHidePhoneNumber() {
+  	putBoolean(PREF_HIDE_PHONE_NUMBER, hidePhoneNumber ^= true);
   }
 }
