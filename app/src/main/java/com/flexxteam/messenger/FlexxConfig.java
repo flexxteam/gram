@@ -183,14 +183,17 @@ public class FlexxConfig {
   }
 
   public void toggleDisableCameraButton() {
+    notifyNewSettingsListeners(PREF_DISABLE_CAMERA_BUTTON, !disableCameraButton, disableCameraButton);
     putBoolean(PREF_DISABLE_CAMERA_BUTTON, disableCameraButton ^= true);
   }
 
   public void toggleDisableRecordButton() {
+    notifyNewSettingsListeners(PREF_DISABLE_RECORD_BUTTON, !disableRecordButton, disableRecordButton);
     putBoolean(PREF_DISABLE_RECORD_BUTTON, disableRecordButton ^= true);
   }
 
   public void toggleDisableSenderButton() {
+    notifyNewSettingsListeners(PREF_DISABLE_SENDER_BUTTON, !disableSenderButton, disableSenderButton);
     putBoolean(PREF_DISABLE_SENDER_BUTTON, disableSenderButton ^= true);
   }
 
