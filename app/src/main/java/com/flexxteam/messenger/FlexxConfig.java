@@ -47,6 +47,9 @@ public class FlexxConfig {
   private static boolean disableRecordButton = instance().getBoolean(PREF_DISABLE_RECORD_BUTTON, false);
   private static boolean disableSenderButton = instance().getBoolean(PREF_DISABLE_SENDER_BUTTON, false);
 
+  private static final String PREF_PHOTO_SIZE_LIMIT_2560 = "photo_size_limit_2560";
+  private static boolean photoSizeLimit2560 = instance().getBoolean(PREF_PHOTO_SIZE_LIMIT_2560, false);
+
   private FlexxConfig () {
     File configDir = new File(UI.getAppContext().getFilesDir(), "flexx_config");
     if (!configDir.exists() && !configDir.mkdir()) {
@@ -197,5 +200,9 @@ public class FlexxConfig {
 
   public void toggleChatFoldersHideBottomBarOnScroll() {
     putBoolean(PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL, chatFoldersHideBottomBarOnScroll ^= true);
+  }
+
+  public void togglePhotoSizeLimit2560() {
+    putBoolean(PREF_PHOTO_SIZE_LIMIT_2560, photoSizeLimit2560 ^= true);
   }
 }

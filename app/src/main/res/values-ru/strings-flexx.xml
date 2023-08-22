@@ -17,6 +17,7 @@
   <string name="AboutProject">О проекте</string>
   <string name="Drawer">Боковое меню</string>
   <string name="MessagePanel">Панель ввода сообщений</string>
+  <string name="Experimental">Экспериментальные</string>
 
   <!-- Main Preferences Controller Strings -->
   <string name="CheckUpdates">Проверить обновления</string>
@@ -48,5 +49,10 @@
   <string name="DisableCameraButton">Отключить кнопку камеры</string>
   <string name="DisableRecordButton">Отключить кнопку записи</string>
   <string name="DisableSenderButton">Отключить кнопку отправки от канала</string>
+
+  <!-- Other Preferences Controller Strings -->
+  <string name="PhotoSizeLimit2560">Отправка фото большого размера</string>
+  <string name="PhotoSizeLimit2560Desc">Увеличить размер сторон на сжатых фото до 2560px.</string>
+  <string name="WarningPhotoSizeLimit">Внимание! Эта функция нестабильна и может повлечь за собой множество визуальных проблем. Отключите эту функцию и очистите данные через хранилище, если качество отправляемых фото ухудшилось, или Вы наблюдаете критические ошибки, связанные с отправкой фото.</string>
 
 </resources>

@@ -44,4 +44,7 @@
   <item type="id" name="btn_DisableRecordButton" />
   <item type="id" name="btn_DisableSenderButton" />
 
+  <!-- Other Preferences Controller ids -->
+  <item type="id" name="btn_PhotoSizeLimit2560" />
+
 </resources>

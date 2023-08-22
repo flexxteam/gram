@@ -40,9 +40,10 @@ public class OtherPreferencesController extends RecyclerViewController<Void> imp
 
   @Override public void onClick (View v) {
     int viewId = v.getId();
-    /* if (viewId == R.id.something) {
-      Do action.
-    } */
+    if (viewId == R.id.btn_PhotoSizeLimit2560) {
+      FlexxConfig.instance().togglePhotoSizeLimit2560();
+      adapter.updateValuedSettingById(R.id.btn_PhotoSizeLimit2560);
+    } 
   }
 
   @Override protected void onCreateView (Context context, CustomRecyclerView recyclerView) {
@@ -50,15 +51,22 @@ public class OtherPreferencesController extends RecyclerViewController<Void> imp
       @Override protected void setValuedSetting (ListItem item, SettingView view, boolean isUpdate) {
         view.setDrawModifier(item.getDrawModifier());
         int itemId = item.getId();
-        /* if (itemId == R.id.something) {
-          Do action.
-        } */
+        if (itemId == R.id.btn_PhotoSizeLimit2560) {
+          view.getToggler().setRadioEnabled(FlexxConfig.photoSizeLimit2560, isUpdate);
+          view.setData(R.string.PhotoSizeLimit2560Desc);
+        } 
       }
     };
 
     ArrayList<ListItem> items = new ArrayList<>();
 
-    // List items.
+    items.add(new ListItem(ListItem.TYPE_EMPTY_OFFSET_SMALL));
+
+    items.add(new ListItem(ListItem.TYPE_HEADER, 0, 0, R.string.Experimental));
+    items.add(new ListItem(ListItem.TYPE_SHADOW_TOP));
+    items.add(new ListItem(ListItem.TYPE_VALUED_SETTING_COMPACT_WITH_TOGGLER, R.id.btn_PhotoSizeLimit2560, 0, R.string.PhotoSizeLimit2560));
+    items.add(new ListItem(ListItem.TYPE_SHADOW_BOTTOM));
+    items.add(new ListItem(ListItem.TYPE_DESCRIPTION, 0, 0, R.string.WarningPhotoSizeLimit));
 
     adapter.setItems(items, true);
     recyclerView.setAdapter(adapter);

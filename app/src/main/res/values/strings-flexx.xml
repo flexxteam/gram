@@ -25,6 +25,7 @@
   <string name="AboutProject">About</string>
   <string name="Drawer">Drawer</string>
   <string name="MessagePanel">Message input panel</string>
+  <string name="Experimental">Experimental</string>
 
   <!-- Main Preferences Controller Strings -->
   <string name="CheckUpdates">Check updates</string>
@@ -54,5 +55,10 @@
   <string name="DisableCameraButton">Disable camera button</string>
   <string name="DisableRecordButton">Disable record button</string>
   <string name="DisableSenderButton">Disable send-as button</string>
+
+  <!-- Other Preferences Controller Strings -->
+  <string name="PhotoSizeLimit2560">Send large photos</string>
+  <string name="PhotoSizeLimit2560Desc">Increase the limit on compressed images to 2560px.</string>
+  <string name="WarningPhotoSizeLimit">Attention! This feature is unstable and can cause a lot of visual bugs. Disable this feature and clear the data through the storage if the quality of the sent photos has deteriorated, or you observe critical errors associated with sending photos.</string>
 
 </resources>

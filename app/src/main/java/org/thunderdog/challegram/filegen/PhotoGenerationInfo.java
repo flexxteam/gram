@@ -21,6 +21,8 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 
+import com.flexxteam.messenger.FlexxConfig;
+
 import org.drinkless.tdlib.TdApi;
 import org.thunderdog.challegram.Log;
 import org.thunderdog.challegram.U;
@@ -37,7 +39,7 @@ import me.vkryl.core.MathUtils;
 import me.vkryl.core.StringUtils;
 
 public class PhotoGenerationInfo extends GenerationInfo {
-  public static final int SIZE_LIMIT = 1280;
+  public static final int SIZE_LIMIT = setPhotoSizeLimit();
 
   private int rotation; // 0, 90, 180 or 270
   private boolean isFiltered;
@@ -412,5 +414,13 @@ public class PhotoGenerationInfo extends GenerationInfo {
     }
 
     return b.toString();
+  }
+
+  public static int setPhotoSizeLimit() {
+    if (FlexxConfig.photoSizeLimit2560) {
+      return 2560;
+    } else {
+      return 1280;
+    }
   }
 }
