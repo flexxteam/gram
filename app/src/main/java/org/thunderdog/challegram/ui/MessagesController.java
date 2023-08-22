@@ -68,6 +68,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.flexxteam.messenger.FlexxConfig;
+
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Status;
@@ -297,7 +299,8 @@ public class MessagesController extends ViewController<MessagesController.Argume
   RecordAudioVideoController.RecordStateListeners,
   ViewPager.OnPageChangeListener, ViewPagerTopView.OnItemClickListener,
   TGMessage.SelectableDelegate, GlobalAccountListener, EmojiToneHelper.Delegate, ComplexHeaderView.Callback, LiveLocationHelper.Callback, CreatePollController.Callback,
-  HapticMenuHelper.Provider, HapticMenuHelper.OnItemClickListener, TdlibSettingsManager.DismissRequestsListener, InputView.SelectionChangeListener {
+  HapticMenuHelper.Provider, HapticMenuHelper.OnItemClickListener, TdlibSettingsManager.DismissRequestsListener, InputView.SelectionChangeListener,
+  FlexxConfig.SettingsChangeListener {
 
   private boolean reuseEnabled;
   private boolean destroyInstance;
@@ -559,6 +562,44 @@ public class MessagesController extends ViewController<MessagesController.Argume
       headerCell.setForcedSubtitle(Lang.lowercase(Lang.getString(isSelfChat() ? R.string.Reminders : R.string.ScheduledMessages)));
     } else {
       headerCell.setForcedSubtitle(null);
+    }
+  }
+
+  @Override
+  public void onSettingsChanged (String key, Object newSettings, Object oldSettings) {
+    switch (key) {
+      case FlexxConfig.PREF_DISABLE_CAMERA_BUTTON:
+        if (cameraButton == null) {
+          return;
+        }
+        boolean disableCameraButton = (boolean) newSettings;
+        if (disableCameraButton) {
+          attachButtons.removeView(cameraButton);
+        } else {
+          attachButtons.addView(cameraButton);
+        }
+        break;
+      case FlexxSConfig.PREF_DISABLE_RECORD_BUTTON:
+        if (recordButton == null) {
+          return;
+        }
+        boolean disableRecordButton = (boolean) newSettings;
+        if (disableRecordButton) {
+          attachButtons.removeView(recordButton);
+        } else {
+          attachButtons.addView(recordButton);
+        }
+        break;
+      case FlexxConfig.PREF_DISABLE_SENDER_BUTTON:
+        if (messageSenderButton == null) {
+          return;
+        }
+        boolean disableSenderButton = (boolean) newSettings;
+        if (disableSenderButton) {
+          contentView.removeView(messageSenderButton);
+        } else {
+          contentView.addView(messageSenderButton);
+        }
     }
   }
 
@@ -1146,11 +1187,13 @@ public class MessagesController extends ViewController<MessagesController.Argume
     if (scheduleButton != null) {
       attachButtons.addView(scheduleButton);
     }
-    if (cameraButton != null) {
+    if (!FlexxConfig.disableCameraButton && cameraButton != null) {
       attachButtons.addView(cameraButton);
     }
     attachButtons.addView(mediaButton);
-    attachButtons.addView(recordButton);
+    if (!FlexxConfig.disableRecordButton) {
+      attachButtons.addView(recordButton);
+    }
     attachButtons.updatePivot();
 
     params = new RelativeLayout.LayoutParams(Screen.dp(55f), Screen.dp(49f));
@@ -1380,7 +1423,9 @@ public class MessagesController extends ViewController<MessagesController.Argume
       contentView.addView(emojiButton);
       contentView.addView(attachButtons);
       contentView.addView(sendButton);
-      contentView.addView(messageSenderButton);
+      if (!FlexxConfig.disableSenderButton) {
+        contentView.addView(messageSenderButton);
+      }
 
       initSearchControls();
       contentView.addView(searchControlsLayout);
@@ -1396,6 +1441,7 @@ public class MessagesController extends ViewController<MessagesController.Argume
 
     updateView();
 
+    FlexxConfig.instance().addNewSettingsListener(this);
     TGLegacyManager.instance().addEmojiListener(this);
 
     if (needTabs()) {

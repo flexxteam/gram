@@ -24,6 +24,7 @@
   <string name="Preferences">Preferences</string>
   <string name="AboutProject">About</string>
   <string name="Drawer">Drawer</string>
+  <string name="MessagePanel">Message input panel</string>
 
   <!-- Main Preferences Controller Strings -->
   <string name="CheckUpdates">Check updates</string>
@@ -42,5 +43,10 @@
   <!-- Appearance Preferences Controller String -->
   <string name="HidePhoneNumber">Hide phone number</string>
   <string name="HidePhoneNumberDesc">Enabling this setting will hide your phone number from the drawer and profile. Note: You will need to restart the application to apply the changes.</string>
+
+  <!-- Chats Preferences Controller Strings -->
+  <string name="DisableCameraButton">Disable camera button</string>
+  <string name="DisableRecordButton">Disable record button</string>
+  <string name="DisableSenderButton">Disable send-as button</string>
 
 </resources>

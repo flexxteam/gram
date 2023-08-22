@@ -34,6 +34,13 @@ public class FlexxConfig {
   private static final String PREF_HIDE_PHONE_NUMBER = "hide_phone_number";
   private static boolean hidePhoneNumber = instance().getBoolean(PREF_HIDE_PHONE_NUMBER, false);
 
+  private static final String PREF_DISABLE_CAMERA_BUTTON = "disable_camera_button";
+  private static final String PREF_DISABLE_RECORD_BUTTON = "disable_record_button";
+  private static final String PREF_DISABLE_SENDER_BUTTON = "disable_sender_button";
+  private static boolean disableCameraButton = instance().getBoolean(PREF_DISABLE_CAMERA_BUTTON, false);
+  private static boolean disableRecordButton = instance().getBoolean(PREF_DISABLE_RECORD_BUTTON, false);
+  private static boolean disableSenderButton = instance().getBoolean(PREF_DISABLE_SENDER_BUTTON, false);
+
   private FlexxConfig () {
     File configDir = new File(UI.getAppContext().getFilesDir(), "flexx_config");
     if (!configDir.exists() && !configDir.mkdir()) {
@@ -160,5 +167,17 @@ public class FlexxConfig {
 
   public void toggleHidePhoneNumber() {
   	putBoolean(PREF_HIDE_PHONE_NUMBER, hidePhoneNumber ^= true);
+  }
+
+  public void toggleDisableCameraButton() {
+    putBoolean(PREF_DISABLE_CAMERA_BUTTON, disableCameraButton ^= true);
+  }
+
+  public void toggleDisableRecordButton() {
+    putBoolean(PREF_DISABLE_RECORD_BUTTON, disableRecordButton ^= true);
+  }
+
+  public void toggleDisableSenderButton() {
+    putBoolean(PREF_DISABLE_SENDER_BUTTON, disableSenderButton ^= true);
   }
 }
