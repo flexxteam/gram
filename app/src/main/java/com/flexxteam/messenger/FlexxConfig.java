@@ -31,24 +31,24 @@ public class FlexxConfig {
   private final LevelDB config;
   private static final String KEY_VERSION = "version";
 
-  private static final String PREF_HIDE_PHONE_NUMBER = "hide_phone_number";
-  private static final String PREF_ENABLE_CHAT_FOLDERS = "enable_chat_folders";
-  private static final String PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL = "chatfolders_hide_bottombar_on_scroll";
-  private static boolean hidePhoneNumber = instance().getBoolean(PREF_HIDE_PHONE_NUMBER, false);
-  private static boolean enableChatFolders = instance().getBoolean(PREF_ENABLE_CHAT_FOLDERS, true);
-  private static boolean chatFoldersHideBottomBarOnScroll = instance().getBoolean(PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL, true);
+  public static final String PREF_HIDE_PHONE_NUMBER = "hide_phone_number";
+  public static final String PREF_ENABLE_CHAT_FOLDERS = "enable_chat_folders";
+  public static final String PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL = "chatfolders_hide_bottombar_on_scroll";
+  public static boolean hidePhoneNumber = instance().getBoolean(PREF_HIDE_PHONE_NUMBER, false);
+  public static boolean enableChatFolders = instance().getBoolean(PREF_ENABLE_CHAT_FOLDERS, true);
+  public static boolean chatFoldersHideBottomBarOnScroll = instance().getBoolean(PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL, true);
 
-  private static final String PREF_DISABLE_STICKER_TIMESTAMP = "disable_sticker_timestamp";
-  private static final String PREF_DISABLE_CAMERA_BUTTON = "disable_camera_button";
-  private static final String PREF_DISABLE_RECORD_BUTTON = "disable_record_button";
-  private static final String PREF_DISABLE_SENDER_BUTTON = "disable_sender_button";
-  private static boolean disableStickerTimestamp = instance().getBoolean(PREF_DISABLE_STICKER_TIMESTAMP, false);
-  private static boolean disableCameraButton = instance().getBoolean(PREF_DISABLE_CAMERA_BUTTON, false);
-  private static boolean disableRecordButton = instance().getBoolean(PREF_DISABLE_RECORD_BUTTON, false);
-  private static boolean disableSenderButton = instance().getBoolean(PREF_DISABLE_SENDER_BUTTON, false);
+  public static final String PREF_DISABLE_STICKER_TIMESTAMP = "disable_sticker_timestamp";
+  public static final String PREF_DISABLE_CAMERA_BUTTON = "disable_camera_button";
+  public static final String PREF_DISABLE_RECORD_BUTTON = "disable_record_button";
+  public static final String PREF_DISABLE_SENDER_BUTTON = "disable_sender_button";
+  public static boolean disableStickerTimestamp = instance().getBoolean(PREF_DISABLE_STICKER_TIMESTAMP, false);
+  public static boolean disableCameraButton = instance().getBoolean(PREF_DISABLE_CAMERA_BUTTON, false);
+  public static boolean disableRecordButton = instance().getBoolean(PREF_DISABLE_RECORD_BUTTON, false);
+  public static boolean disableSenderButton = instance().getBoolean(PREF_DISABLE_SENDER_BUTTON, false);
 
-  private static final String PREF_PHOTO_SIZE_LIMIT_2560 = "photo_size_limit_2560";
-  private static boolean photoSizeLimit2560 = instance().getBoolean(PREF_PHOTO_SIZE_LIMIT_2560, false);
+  public static final String PREF_PHOTO_SIZE_LIMIT_2560 = "photo_size_limit_2560";
+  public static boolean photoSizeLimit2560 = instance().getBoolean(PREF_PHOTO_SIZE_LIMIT_2560, false);
 
   private FlexxConfig () {
     File configDir = new File(UI.getAppContext().getFilesDir(), "flexx_config");
