@@ -34,9 +34,21 @@ public class FlexxConfig {
   public static final String PREF_HIDE_PHONE_NUMBER = "hide_phone_number";
   public static final String PREF_ENABLE_CHAT_FOLDERS = "enable_chat_folders";
   public static final String PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL = "chatfolders_hide_bottombar_on_scroll";
+  public static final String PREF_DRAWER_CONTACTS = "drawer_contacts";
+  public static final String PREF_DRAWER_CALLS = "drawer_calls";
+  public static final String PREF_DRAWER_SAVED_MESSAGES = "drawer_saved_messages";
+  public static final String PREF_DRAWER_INVITE = "drawer_invite";
+  public static final String PREF_DRAWER_HELP = "drawer_help";
+  public static final String PREF_DRAWER_NIGHT = "drawer_night";
   public static boolean hidePhoneNumber = instance().getBoolean(PREF_HIDE_PHONE_NUMBER, false);
   public static boolean enableChatFolders = instance().getBoolean(PREF_ENABLE_CHAT_FOLDERS, true);
   public static boolean chatFoldersHideBottomBarOnScroll = instance().getBoolean(PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL, true);
+  public static boolean contacts = instance().getBoolean(PREF_DRAWER_CONTACTS, true);
+  public static boolean calls = instance().getBoolean(PREF_DRAWER_CALLS, true);
+  public static boolean savedMessages = instance().getBoolean(PREF_DRAWER_SAVED_MESSAGES, true);
+  public static boolean invite = instance().getBoolean(PREF_DRAWER_INVITE, true);
+  public static boolean help = instance().getBoolean(PREF_DRAWER_HELP, true);
+  public static boolean night = instance().getBoolean(PREF_DRAWER_NIGHT, true);
 
   public static final String PREF_DISABLE_STICKER_TIMESTAMP = "disable_sticker_timestamp";
   public static final String PREF_DISABLE_CAMERA_BUTTON = "disable_camera_button";
@@ -203,6 +215,22 @@ public class FlexxConfig {
 
   public void toggleChatFoldersHideBottomBarOnScroll() {
     putBoolean(PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL, chatFoldersHideBottomBarOnScroll ^= true);
+  }
+
+  public void toggleDrawerElements(int id) {
+    if (id == 1) {
+      putBoolean(PREF_DRAWER_CONTACTS, contacts ^= true);
+    } else if (id == 2) {
+      putBoolean(PREF_DRAWER_CALLS, calls ^= true);
+    } else if (id == 3) {
+      putBoolean(PREF_DRAWER_SAVED_MESSAGES, savedMessages ^= true);
+    } else if (id == 4) {
+      putBoolean(PREF_DRAWER_INVITE, invite ^= true);
+    } else if (id == 5) {
+      putBoolean(PREF_DRAWER_HELP, help ^= true);
+    } else if (id == 6) {
+      putBoolean(PREF_DRAWER_NIGHT, night ^= true);
+    }
   }
 
   public void togglePhotoSizeLimit2560() {

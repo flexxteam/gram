@@ -42,6 +42,9 @@
   <string name="DonateDesc">Support the development of the project.</string>
 
   <!-- Appearance Preferences Controller String -->
+  <string name="DrawerManager">Drawer manager</string>
+  <string name="DrawerManagerDesc">Customize the display of icons in the drawer.</string>
+  <string name="WarningDrawerManager">Here you can choose which icons will be displayed in the drawer. Note: You will need to restart the application to apply the changes.</string>
   <string name="HidePhoneNumber">Hide phone number</string>
   <string name="HidePhoneNumberDesc">Enabling this setting will hide your phone number from the drawer and profile. Note: You will need to restart the application to apply the changes.</string>
 

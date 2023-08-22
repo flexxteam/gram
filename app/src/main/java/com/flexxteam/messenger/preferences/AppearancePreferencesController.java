@@ -21,6 +21,7 @@ import org.thunderdog.challegram.v.CustomRecyclerView;
 import java.util.ArrayList;
 
 import com.flexxteam.messenger.FlexxConfig;
+import com.flexxteam.messenger.preferences.drawer.DrawerManagerController;
 
 public class AppearancePreferencesController extends RecyclerViewController<Void> implements View.OnClickListener {
 
@@ -40,7 +41,9 @@ public class AppearancePreferencesController extends RecyclerViewController<Void
 
   @Override public void onClick (View v) {
     int viewId = v.getId();
-    if (viewId == R.id.btn_HidePhoneNumber) {
+    if (viewId == R.id.btn_DrawerManager) {
+      navigateTo(new DrawerManagerController(context, tdlib));
+    } else if (viewId == R.id.btn_HidePhoneNumber) {
       FlexxConfig.instance().toggleHidePhoneNumber();
       adapter.updateValuedSettingById(R.id.btn_HidePhoneNumber);
     } else if (viewId == R.id.btn_EnableChatFolders) {
@@ -57,7 +60,9 @@ public class AppearancePreferencesController extends RecyclerViewController<Void
       @Override protected void setValuedSetting (ListItem item, SettingView view, boolean isUpdate) {
         view.setDrawModifier(item.getDrawModifier());
         int itemId = item.getId();
-        if (itemId == R.id.btn_HidePhoneNumber) {
+        if (itemId == R.id.btn_DrawerManager) {
+          view.setData(R.string.DrawerManagerDesc);
+        } else if (itemId == R.id.btn_HidePhoneNumber) {
           view.getToggler().setRadioEnabled(FlexxConfig.hidePhoneNumber, isUpdate);
         } else if (itemId == R.id.btn_EnableChatFolders) {
           view.getToggler().setRadioEnabled(FlexxConfig.enableChatFolders, isUpdate);
@@ -73,6 +78,8 @@ public class AppearancePreferencesController extends RecyclerViewController<Void
 
     items.add(new ListItem(ListItem.TYPE_HEADER, 0, 0, R.string.Drawer));
     items.add(new ListItem(ListItem.TYPE_SHADOW_TOP));
+    items.add(new ListItem(ListItem.TYPE_VALUED_SETTING_COMPACT, R.id.btn_DrawerManager, 0, R.string.DrawerManager));
+    items.add(new ListItem(ListItem.TYPE_SEPARATOR_FULL));
     items.add(new ListItem(ListItem.TYPE_RADIO_SETTING, R.id.btn_HidePhoneNumber, 0, R.string.HidePhoneNumber));
     items.add(new ListItem(ListItem.TYPE_SHADOW_BOTTOM));
     items.add(new ListItem(ListItem.TYPE_DESCRIPTION, 0, 0, R.string.HidePhoneNumberDesc));

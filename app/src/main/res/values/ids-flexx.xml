@@ -16,6 +16,7 @@
   <item type="id" name="controller_SecurityPreferences" />
   <item type="id" name="controller_PushPreferences" />
   <item type="id" name="controller_OtherPreferences" />
+  <item type="id" name="controller_DrawerManager" />
 
   <!-- Main Preferences Controller ids -->
   <item type="id" name="btn_Updates" />
@@ -32,6 +33,8 @@
   <item type="id" name="btn_Donate" />
 
   <!-- Appearance Preferences Controller ids -->
+  <item type="id" name="btn_DrawerManager" />
+
   <item type="id" name="btn_HidePhoneNumber" />
 
   <item type="id" name="btn_EnableChatFolders" />
