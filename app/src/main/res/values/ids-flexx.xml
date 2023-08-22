@@ -34,6 +34,9 @@
   <!-- Appearance Preferences Controller ids -->
   <item type="id" name="btn_HidePhoneNumber" />
 
+  <item type="id" name="btn_EnableChatFolders" />
+  <item type="id" name="btn_ChatFoldersHideBottomBarOnScroll" />
+
   <!-- Chats Preferences Controller ids -->
   <item type="id" name="btn_DisableCameraButton" />
   <item type="id" name="btn_DisableRecordButton" />

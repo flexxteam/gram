@@ -44,6 +44,10 @@
   <string name="HidePhoneNumber">Hide phone number</string>
   <string name="HidePhoneNumberDesc">Enabling this setting will hide your phone number from the drawer and profile. Note: You will need to restart the application to apply the changes.</string>
 
+  <string name="EnableChatFolders">Enable chat folders</string>
+  <string name="EnableChatFoldersDesc">Enabling this setting will replace the inconvenient Chats and Calls tabs with modern chat folders like in the official Telegram client.</string>
+  <string name="ChatFoldersHideBottomBarOnScroll">Hide bottom bar on scroll</string>
+
   <!-- Chats Preferences Controller Strings -->
   <string name="DisableCameraButton">Disable camera button</string>
   <string name="DisableRecordButton">Disable record button</string>

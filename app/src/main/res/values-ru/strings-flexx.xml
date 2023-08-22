@@ -38,6 +38,10 @@
   <string name="HidePhoneNumber">Скрыть номер телефона</string>
   <string name="HidePhoneNumberDesc">Включение этой настройки скроет Ваш номер телефона из бокового меню и профиля. Примечание: для применения изменений потребуется перезапуск приложения.</string>
 
+  <string name="EnableChatFolders">Включить папки с чатами</string>
+  <string name="EnableChatFoldersDesc">Включение этой настройки заменит неудобные вкладки Чаты и Звонки на современные папки как в официальном клиенте Telegram.</string>
+  <string name="ChatFoldersHideBottomBarOnScroll">Скрывать папки снизу при скролле</string>
+
   <!-- Chats Preferences Controller Strings -->
   <string name="DisableCameraButton">Отключить кнопку камеры</string>
   <string name="DisableRecordButton">Отключить кнопку записи</string>

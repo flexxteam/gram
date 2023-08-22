@@ -32,7 +32,11 @@ public class FlexxConfig {
   private static final String KEY_VERSION = "version";
 
   private static final String PREF_HIDE_PHONE_NUMBER = "hide_phone_number";
+  private static final String PREF_ENABLE_CHAT_FOLDERS = "enable_chat_folders";
+  private static final String PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL = "chatfolders_hide_bottombar_on_scroll";
   private static boolean hidePhoneNumber = instance().getBoolean(PREF_HIDE_PHONE_NUMBER, false);
+  private static boolean enableChatFolders = instance().getBoolean(PREF_ENABLE_CHAT_FOLDERS, true);
+  private static boolean chatFoldersHideBottomBarOnScroll = instance().getBoolean(PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL, true);
 
   private static final String PREF_DISABLE_CAMERA_BUTTON = "disable_camera_button";
   private static final String PREF_DISABLE_RECORD_BUTTON = "disable_record_button";
@@ -179,5 +183,13 @@ public class FlexxConfig {
 
   public void toggleDisableSenderButton() {
     putBoolean(PREF_DISABLE_SENDER_BUTTON, disableSenderButton ^= true);
+  }
+
+  public void toggleEnableChatFolders() {
+    putBoolean(PREF_ENABLE_CHAT_FOLDERS, enableChatFolders ^= true);
+  }
+
+  public void toggleChatFoldersHideBottomBarOnScroll() {
+    putBoolean(PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL, chatFoldersHideBottomBarOnScroll ^= true);
   }
 }
