@@ -35,7 +35,7 @@ public class PushPreferencesController extends RecyclerViewController<Void> impl
   }
 
   @Override public int getId () {
-    return R.id.controller_;
+    return R.id.controller_PushPreferences;
   }
 
   @Override public void onClick (View v) {

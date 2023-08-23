@@ -31,6 +31,7 @@ public class FlexxConfig {
   private final LevelDB config;
   private static final String KEY_VERSION = "version";
 
+  // Appearance Preferences
   public static final String PREF_HIDE_PHONE_NUMBER = "hide_phone_number";
   public static final String PREF_ENABLE_CHAT_FOLDERS = "enable_chat_folders";
   public static final String PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL = "chatfolders_hide_bottombar_on_scroll";
@@ -50,6 +51,7 @@ public class FlexxConfig {
   public static boolean help = instance().getBoolean(PREF_DRAWER_HELP, true);
   public static boolean night = instance().getBoolean(PREF_DRAWER_NIGHT, true);
 
+  // Chats Preferences
   public static final String PREF_DISABLE_STICKER_TIMESTAMP = "disable_sticker_timestamp";
   public static final String PREF_INCREASE_RECENT_STICKERS_COUNT = "increase_recent_stickers_count";
   public static final String PREF_DISABLE_CAMERA_BUTTON = "disable_camera_button";
@@ -61,6 +63,7 @@ public class FlexxConfig {
   public static boolean disableRecordButton = instance().getBoolean(PREF_DISABLE_RECORD_BUTTON, false);
   public static boolean disableSenderButton = instance().getBoolean(PREF_DISABLE_SENDER_BUTTON, false);
 
+  // Other Preferences
   public static final String PREF_PHOTO_SIZE_LIMIT_2560 = "photo_size_limit_2560";
   public static boolean photoSizeLimit2560 = instance().getBoolean(PREF_PHOTO_SIZE_LIMIT_2560, false);
 

@@ -38,7 +38,7 @@
   <!-- Appearance Preferences Controller Strings -->
   <string name="DrawerManager">Управление боковым меню</string>
   <string name="DrawerManagerDesc">Настройте отображение иконок в боковом меню.</string>
-  <string name="WarningDrawerManager">Здесь Вы можете выбрать, какие иконки будут отображаться в боковом меню. Примечание: для применения изменений потребуется перезапуск приложения.</string>
+  <string name="WarningDrawerManager">Здесь Вы можете выбрать, какие пункты будут отображаться в боковом меню. Примечание: для применения изменений потребуется перезапуск приложения.</string>
   <string name="HidePhoneNumber">Скрыть номер телефона</string>
   <string name="HidePhoneNumberDesc">Включение этой настройки скроет Ваш номер телефона из бокового меню и профиля. Примечание: для применения изменений потребуется перезапуск приложения.</string>
 
