@@ -41,6 +41,7 @@
   <item type="id" name="btn_ChatFoldersHideBottomBarOnScroll" />
 
   <!-- Chats Preferences Controller ids -->
+  <item type="id" name="btn_IncreaseRecentStickersCount" />
   <item type="id" name="btn_DisableStickerTimestamp" />
   
   <item type="id" name="btn_DisableCameraButton" />

@@ -40,7 +40,10 @@ public class ChatsPreferencesController extends RecyclerViewController<Void> imp
 
   @Override public void onClick (View v) {
     int viewId = v.getId();
-    if (viewId == R.id.btn_DisableStickerTimestamp) {
+    if (viewId == R.id.btn_IncreaseRecentStickersCount) {
+      FlexxConfig.instnace().toggleIncreaseRecentStickersCount();
+      adapter.updateValuedSettingById(R.id.btn_IncreaseRecentStickersCount)
+    } else if (viewId == R.id.btn_DisableStickerTimestamp) {
       FlexxConfig.instance().toggleDisableStickerTimestamp();
       adapter.updateValuedSettingById(R.id.btn_DisableStickerTimestamp)
     } else if (viewId == R.id.btn_DisableCameraButton) {
@@ -60,7 +63,10 @@ public class ChatsPreferencesController extends RecyclerViewController<Void> imp
       @Override protected void setValuedSetting (ListItem item, SettingView view, boolean isUpdate) {
         view.setDrawModifier(item.getDrawModifier());
         int itemId = item.getId();
-        if (itemId == R.id.btn_DisableStickerTimestamp) {
+        if (itemId == R.id.btn_IncreaseRecentStickersCount) {
+          view.getToggler().setRadioEnabled(FlexxConfig.increaseRecentStickersCount, isUpdate);
+          view.setData(R.string.IncreaseRecentStickersCountDesc);
+        } else if (itemId == R.id.btn_DisableStickerTimestamp) {
           view.getToggler().setRadioEnabled(FlexxConfig.disableStickerTimestamp, isUpdate);
         } else if (itemId == R.id.btn_DisableCameraButton) {
           view.getToggler().setRadioEnabled(FlexxConfig.disableCameraButton, isUpdate);
@@ -79,6 +85,8 @@ public class ChatsPreferencesController extends RecyclerViewController<Void> imp
     items.add(new ListItem(ListItem.TYPE_HEADER, 0, 0, R.string.Stickers));
     items.add(new ListItem(ListItem.TYPE_SHADOW_TOP));
     items.add(new ListItem(ListItem.TYPE_RADIO_SETTING, R.id.btn_DisableStickerTimestamp, 0, R.string.DisableStickerTimestamp));
+    items.add(new ListItem(ListItem.TYPE_SEPARATOR_FULL));
+    items.add(new ListItem(ListItem.TYPE_VALUED_SETTING_COMPACT_WITH_TOGGLER, R.id.btn_IncreaseRecentStickersCount, 0, R.string.IncreaseRecentStickersCount));
     items.add(new ListItem(ListItem.TYPE_SHADOW_BOTTOM));
 
     items.add(new ListItem(ListItem.TYPE_HEADER, 0, 0, R.string.MessagePanel));

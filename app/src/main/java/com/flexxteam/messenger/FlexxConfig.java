@@ -51,10 +51,12 @@ public class FlexxConfig {
   public static boolean night = instance().getBoolean(PREF_DRAWER_NIGHT, true);
 
   public static final String PREF_DISABLE_STICKER_TIMESTAMP = "disable_sticker_timestamp";
+  public static final String PREF_INCREASE_RECENT_STICKERS_COUNT = "increase_recent_stickers_count";
   public static final String PREF_DISABLE_CAMERA_BUTTON = "disable_camera_button";
   public static final String PREF_DISABLE_RECORD_BUTTON = "disable_record_button";
   public static final String PREF_DISABLE_SENDER_BUTTON = "disable_sender_button";
   public static boolean disableStickerTimestamp = instance().getBoolean(PREF_DISABLE_STICKER_TIMESTAMP, false);
+  public static boolean increaseRecentStickersCount = instance().getBoolean(PREF_INCREASE_RECENT_STICKERS_COUNT, false);
   public static boolean disableCameraButton = instance().getBoolean(PREF_DISABLE_CAMERA_BUTTON, false);
   public static boolean disableRecordButton = instance().getBoolean(PREF_DISABLE_RECORD_BUTTON, false);
   public static boolean disableSenderButton = instance().getBoolean(PREF_DISABLE_SENDER_BUTTON, false);
@@ -192,6 +194,10 @@ public class FlexxConfig {
 
   public void toggleDisableStickerTimestamp() {
     putBoolean(PREF_DISABLE_STICKER_TIMESTAMP, disableStickerTimestamp ^= true);
+  }
+
+  public void toggleIncreaseRecentStickersCount() {
+    putBoolean(PREF_INCREASE_RECENT_STICKERS_COUNT, increaseRecentStickersCount ^= true);
   }
 
   public void toggleDisableChatButtons(int id) {

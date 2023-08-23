@@ -53,6 +53,8 @@
   <string name="ChatFoldersHideBottomBarOnScroll">Hide bottom bar on scroll</string>
 
   <!-- Chats Preferences Controller Strings -->
+  <string name="IncreaseRecentStickersCount">Increase recent stickers count</string>
+  <string name="IncreaseRecentStickersCountDesc">Show 20 recently used stickers instead of 10.</string>
   <string name="DisableStickerTimestamp">Disable sticker timestamp</string>
 
   <string name="DisableCameraButton">Disable camera button</string>

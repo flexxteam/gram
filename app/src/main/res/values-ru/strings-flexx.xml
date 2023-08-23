@@ -47,6 +47,8 @@
   <string name="ChatFoldersHideBottomBarOnScroll">Скрывать папки снизу при скролле</string>
 
   <!-- Chats Preferences Controller Strings -->
+  <string name="IncreaseRecentStickersCount">Увеличить значение недавних стикеров</string>
+  <string name="IncreaseRecentStickersCountDesc">Показывать 20 недавно используемых стикеров вместо 10.</string>
   <string name="DisableStickerTimestamp">Скрыть время отправки на стикерах</string>
 
   <string name="DisableCameraButton">Отключить кнопку камеры</string>
