@@ -44,13 +44,13 @@ public class ChatsPreferencesController extends RecyclerViewController<Void> imp
       FlexxConfig.instance().toggleDisableStickerTimestamp();
       adapter.updateValuedSettingById(R.id.btn_DisableStickerTimestamp)
     } else if (viewId == R.id.btn_DisableCameraButton) {
-      FlexxConfig.instance().toggleDisableCameraButton();
+      FlexxConfig.instance().toggleDisableChatButtons(1);
       adapter.updateValuedSettingById(R.id.btn_DisableCameraButton)
     } else if (viewId == R.id.btn_DisableRecordButton) {
-      FlexxConfig.instance().toggleDisableRecordButton();
+      FlexxConfig.instance().toggleDisableChatButtons(2);
       adapter.updateValuedSettingById(R.id.btn_DisableRecordButton)
     } else if (viewId == R.id.btn_DisableSenderButton) {
-      FlexxConfig.instance().toggleDisableSenderButton();
+      FlexxConfig.instance().toggleDisableChatButtons(3);
       adapter.updateValuedSettingById(R.id.btn_DisableSenderButton);
     }
   }
