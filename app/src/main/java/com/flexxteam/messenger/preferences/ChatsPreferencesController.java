@@ -41,19 +41,19 @@ public class ChatsPreferencesController extends RecyclerViewController<Void> imp
   @Override public void onClick (View v) {
     int viewId = v.getId();
     if (viewId == R.id.btn_IncreaseRecentStickersCount) {
-      FlexxConfig.instnace().toggleIncreaseRecentStickersCount();
+      FlexxConfig.instnace().toggleStickers(1);
       adapter.updateValuedSettingById(R.id.btn_IncreaseRecentStickersCount)
     } else if (viewId == R.id.btn_DisableStickerTimestamp) {
-      FlexxConfig.instance().toggleDisableStickerTimestamp();
+      FlexxConfig.instance().toggleStickers(2);
       adapter.updateValuedSettingById(R.id.btn_DisableStickerTimestamp)
     } else if (viewId == R.id.btn_DisableCameraButton) {
-      FlexxConfig.instance().toggleDisableChatButtons(1);
+      FlexxConfig.instance().toggleChatButtons(1);
       adapter.updateValuedSettingById(R.id.btn_DisableCameraButton)
     } else if (viewId == R.id.btn_DisableRecordButton) {
-      FlexxConfig.instance().toggleDisableChatButtons(2);
+      FlexxConfig.instance().toggleChatButtons(2);
       adapter.updateValuedSettingById(R.id.btn_DisableRecordButton)
     } else if (viewId == R.id.btn_DisableSenderButton) {
-      FlexxConfig.instance().toggleDisableChatButtons(3);
+      FlexxConfig.instance().toggleChatButtons(3);
       adapter.updateValuedSettingById(R.id.btn_DisableSenderButton);
     }
   }

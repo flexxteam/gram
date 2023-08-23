@@ -47,10 +47,10 @@ public class AppearancePreferencesController extends RecyclerViewController<Void
       FlexxConfig.instance().toggleHidePhoneNumber();
       adapter.updateValuedSettingById(R.id.btn_HidePhoneNumber);
     } else if (viewId == R.id.btn_EnableChatFolders) {
-      FlexxConfig.instance().toggleEnableChatFolders();
+      FlexxConfig.instance().toggleChatFolders(1);
       adapter.updateValuedSettingById(R.id.btn_EnableChatFolders);
     } else if (viewId == R.id.btn_ChatFoldersHideBottomBarOnScroll) {
-      FlexxConfig.instance().toggleChatFoldersHideBottomBarOnScroll();
+      FlexxConfig.instance().toggleChatFolders(2);
       adapter.updateValuedSettingById(R.id.btn_ChatFoldersHideBottomBarOnScroll);
     }
   }

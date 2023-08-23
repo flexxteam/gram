@@ -192,15 +192,15 @@ public class FlexxConfig {
   	putBoolean(PREF_HIDE_PHONE_NUMBER, hidePhoneNumber ^= true);
   }
 
-  public void toggleDisableStickerTimestamp() {
-    putBoolean(PREF_DISABLE_STICKER_TIMESTAMP, disableStickerTimestamp ^= true);
+  public void toggleStickers(int id) {
+    if (id == 1) {
+      putBoolean(PREF_INCREASE_RECENT_STICKERS_COUNT, increaseRecentStickersCount ^= true);
+    } else if (id == 2) {
+      putBoolean(PREF_DISABLE_STICKER_TIMESTAMP, disableStickerTimestamp ^= true);
+    }
   }
 
-  public void toggleIncreaseRecentStickersCount() {
-    putBoolean(PREF_INCREASE_RECENT_STICKERS_COUNT, increaseRecentStickersCount ^= true);
-  }
-
-  public void toggleDisableChatButtons(int id) {
+  public void toggleChatButtons(int id) {
     if (id == 1) {
       notifyNewSettingsListeners(PREF_DISABLE_CAMERA_BUTTON, !disableCameraButton, disableCameraButton);
       putBoolean(PREF_DISABLE_CAMERA_BUTTON, disableCameraButton ^= true);
@@ -213,12 +213,12 @@ public class FlexxConfig {
     }
   }
 
-  public void toggleEnableChatFolders() {
-    putBoolean(PREF_ENABLE_CHAT_FOLDERS, enableChatFolders ^= true);
-  }
-
-  public void toggleChatFoldersHideBottomBarOnScroll() {
-    putBoolean(PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL, chatFoldersHideBottomBarOnScroll ^= true);
+  public void toggleChatFolders(int id) {
+    if (id == 1) {
+      putBoolean(PREF_ENABLE_CHAT_FOLDERS, enableChatFolders ^= true);
+    } else if (id == 2) {
+      putBoolean(PREF_CHATFOLDERS_HIDE_BOTTOMBAR_ON_SCROLL, chatFoldersHideBottomBarOnScroll ^= true);
+    }
   }
 
   public void toggleDrawerElements(int id) {
